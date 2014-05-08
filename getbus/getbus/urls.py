@@ -5,7 +5,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'getbus.views.home', name='home'),
-    #url(r'^blog/', include('blog.urls')),
+    url(r'^auth_sptrans/$', 'getbus.views.auth_sptrans', name='auth_sptrans'),
 
     url(r'^admin/', include(admin.site.urls)),
 )

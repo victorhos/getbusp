@@ -2,17 +2,18 @@
 # -*- coding: utf-8 -*-
 
 """ Um cliente python para a API Olho Vivo """
+""" "Créditos para https://gist.github.com/jonathansp/7491340 :) """
+
 from django.conf import settings
 import requests
-
 
 class SPTransClient(object):
     """ Um cliente python para a API Olho Vivo """
 
     def __init__(self):
-        session = requests.Session()
-        url = 'http://api.olhovivo.sptrans.com.br/v0/'
-        token = settings.SPTRANS_KEY
+        self.session = requests.Session()
+        self.url = 'http://api.olhovivo.sptrans.com.br/v0/'
+        self.token = settings.SPTRANS_KEY
 
     def auth(self):
 

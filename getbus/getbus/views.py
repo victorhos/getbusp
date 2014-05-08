@@ -10,8 +10,14 @@ def home(request):
 
     template = '%shome.html' %settings.TEMPLATE_DIRS
 
-    client = SPTransClient()
-
-    client.auth()
-
     return render_to_response(template)
+
+def auth_sptrans(request):
+
+    client = SPTransClient()
+    res = client.auth()
+
+    if res:
+        return HttpResponse(status=200)
+    else:
+        return HttpResponse(status=401)

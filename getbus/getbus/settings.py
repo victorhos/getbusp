@@ -84,4 +84,4 @@ STATIC_URL = '/static/'
 
 TEMPLATE_DIRS = '%s/templates/' %BASE_DIR
 
-SPTRANS_KEY = 'fbaa3f0a2f8e07dfc9ccb81c5bdaacc37a040fc502cad2279db1f17910280751'
+SPTRANS_KEY = 'baa3f0a2f8e07dfc9ccb81c5bdaacc37a040fc502cad2279db1f17910280751'
