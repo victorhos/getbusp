@@ -35,6 +35,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'getbus',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -59,7 +60,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'getbussp',
         'USER': 'root', 
-        'PASSWORD': '123'
+        'PASSWORD': ''
     }
 }
 
@@ -84,4 +85,4 @@ STATIC_URL = '/static/'
 
 TEMPLATE_DIRS = '%s/templates/' %BASE_DIR
 
-SPTRANS_KEY = 'baa3f0a2f8e07dfc9ccb81c5bdaacc37a040fc502cad2279db1f17910280751'
+SPTRANS_KEY = 'fbaa3f0a2f8e07dfc9ccb81c5bdaacc37a040fc502cad2279db1f17910280751'
