@@ -35,6 +35,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_nose',
+    'django_coverage', 
     'getbus',
 )
 
@@ -86,3 +88,5 @@ STATIC_URL = '/static/'
 TEMPLATE_DIRS = '%s/templates/' %BASE_DIR
 
 SPTRANS_KEY = 'fbaa3f0a2f8e07dfc9ccb81c5bdaacc37a040fc502cad2279db1f17910280751'
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'

@@ -2,7 +2,7 @@
 
 import unittest
 from django.test import TestCase
-from sptrans import SPTransClient
+from getbus.sptrans import SPTransClient
 
 class TesteSPTransClient(TestCase):
 
