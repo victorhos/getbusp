@@ -17,3 +17,6 @@ class TesteSPTransClient(TestCase):
         client.token = '000'
 
         self.assertEqual(client.auth(), False)
+
+    def test_get(self):
+        
