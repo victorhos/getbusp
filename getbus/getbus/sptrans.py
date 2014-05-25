@@ -41,7 +41,7 @@ class SPTransClient(object):
         data = response.json()
         return data
 
-    def search_by_bus(self, term):
+    def search_by_bus(self, term=None):
 
         """
         Realiza uma busca das linhas do sistema com base no

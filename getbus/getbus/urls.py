@@ -5,7 +5,9 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'getbus.views.home', name='home'),
+
     url(r'^auth_sptrans/$', 'getbus.views.auth_sptrans', name='auth_sptrans'),
+    url(r'^buscar_bus/$', 'getbus.views.buscar_bus', name='buscar_bus'),
 
     url(r'^admin/', include(admin.site.urls)),
 )

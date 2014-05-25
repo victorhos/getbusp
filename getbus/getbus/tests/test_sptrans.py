@@ -18,5 +18,5 @@ class TesteSPTransClient(TestCase):
 
         self.assertEqual(client.auth(), False)
 
-    def test_get(self):
+#    def test_get(self):
         
