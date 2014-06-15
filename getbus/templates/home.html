@@ -1,130 +1,20 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
   <head>
 
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 
-    <style type="text/css">
-
-      html { height: 100% }
-      body { height: 100%; margin: 0; padding: 0 }
-
-    </style>
-
-    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaHWZ8lCt3Yn0Hp4YCVvDJvmcEEU39aus&sensor=true&libraries=places">
-    </script>
-    <script type="text/javascript">
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaHWZ8lCt3Yn0Hp4YCVvDJvmcEEU39aus&sensor=true&libraries=places"></script>
 
-var geocoder;
-var map;
-var marker;
+    <script src="{% static "js/main.js" %}"></script>
+    <script src="{% static "js/gmaps.js" %}"></script>
 
-function initialize() {
-    //var latlng = new google.maps.LatLng(-23.550634, -46.633326);
-    var latlng = new google.maps.LatLng(-23.567842, -46.648304);
-    var options = {
-        zoom: 12,
-        center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-
-    map = new google.maps.Map(document.getElementById("mapa"), options);
-
-    geocoder = new google.maps.Geocoder();
-
-    marker = new google.maps.Marker({
-        map: map,
-        draggable: true,
-    });
-
-    marker.setPosition(latlng);
-}
-
-$(document).ready(function () {
-
-    initialize();
-
-    function carregarNoMapa(endereco) {
-        geocoder.geocode({ 'address': endereco + ', São Paulo - SP, Brasil', 'region': 'BR' }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                if (results[0]) {
-                    var latitude = results[0].geometry.location.lat();
-                    var longitude = results[0].geometry.location.lng();
-
-                    $('#txtEndereco').val(results[0].formatted_address);
-                    $('#txtLatitude').val(latitude);
-                    $('#txtLongitude').val(longitude);
-
-                    var location = new google.maps.LatLng(latitude, longitude);
-                    marker.setPosition(location);
-                    map.setCenter(location);
-                    map.setZoom(16);
-                }
-            }
-        })
-    }
-
-    $("#btnEndereco").click(function() {
-        if($(this).val() != "")
-            carregarNoMapa($("#txtEndereco").val());
-    })
-
-    $("#txtEndereco").blur(function() {
-        if($(this).val() != "")
-            carregarNoMapa($(this).val());
-    })
-
-    google.maps.event.addListener(marker, 'drag', function () {
-        geocoder.geocode({ 'latLng': marker.getPosition() }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                if (results[0]) {  
-                    $('#txtEndereco').val(results[0].formatted_address);
-                    $('#txtLatitude').val(marker.getPosition().lat());
-                    $('#txtLongitude').val(marker.getPosition().lng());
-                }
-            }
-        });
-    });
-
-    $("#txtEndereco").autocomplete({
-        source: function (request, response) {
-            geocoder.geocode({ 'address': request.term + ', São Paulo - SP, Brasil', 'region': 'BR' }, function (results, status) {
-                response($.map(results, function (item) {
-                    return {
-                        label: item.formatted_address,
-                        value: item.formatted_address,
-                        latitude: item.geometry.location.lat(),
-                        longitude: item.geometry.location.lng()
-                    }
-                }));
-            })
-        },
-        select: function (event, ui) {
-            $("#txtLatitude").val(ui.item.latitude);
-            $("#txtLongitude").val(ui.item.longitude);
-            var location = new google.maps.LatLng(ui.item.latitude, ui.item.longitude);
-            marker.setPosition(location);
-            map.setCenter(location);
-            map.setZoom(16);
-        }
-    });
-
-    $("form").submit(function(event) {
-        event.preventDefault();
-
-        var endereco = $("#txtEndereco").val();
-        var latitude = $("#txtLatitude").val();
-        var longitude = $("#txtLongitude").val();
-
-        alert("Endereço: " + endereco + "\nLatitude: " + latitude + "\nLongitude: " + longitude);
-    });
-
-});
-    </script>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="{% static "css/main.css" %}" type="text/css" media="screen" charset="utf-8" />
 
   </head>
 
@@ -163,7 +53,7 @@ $(document).ready(function () {
 
     </div>
 
-    <div id="mapa" style="height: 500px; width: 100%"></div>
+    <div id="mapa"></div>
 
   </body>
 

@@ -32,7 +32,6 @@ def buscar_bus(request):
     except:
         term = None
 
-    CLIENT.auth()
     res = CLIENT.search_by_bus(term=term)
 
     return HttpResponse(json.dumps(res), content_type='application/json')

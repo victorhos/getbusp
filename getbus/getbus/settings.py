@@ -85,6 +85,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
 TEMPLATE_DIRS = '%s/templates/' %BASE_DIR
 
 SPTRANS_KEY = 'fbaa3f0a2f8e07dfc9ccb81c5bdaacc37a040fc502cad2279db1f17910280751'
