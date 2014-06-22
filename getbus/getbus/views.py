@@ -26,6 +26,31 @@ def auth_sptrans(request):
         return HttpResponse(status=401)
 
 def buscar_bus(request):
+    CLIENT.auth()
+
+    try:
+        term = request.GET['term']
+    except:
+        term = None
+
+    res = CLIENT.search_by_bus(term=term)
+
+    return HttpResponse(json.dumps(res), content_type='application/json')
+
+def detalhe_bus(request):
+    CLIENT.auth()
+
+    try:
+        term = request.GET['term']
+    except:
+        term = None
+
+    res = CLIENT.get_bus_detail(term)
+
+    return HttpResponse(json.dumps(res), content_type='application/json')
+
+def paradas_bus(request):
+    CLIENT.auth()
 
     try:
         term = request.GET['term']
