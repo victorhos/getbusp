@@ -37,26 +37,14 @@ def buscar_bus(request):
 
     return HttpResponse(json.dumps(res), content_type='application/json')
 
-def detalhe_bus(request):
-    CLIENT.auth()
-
-    try:
-        term = request.GET['term']
-    except:
-        term = None
-
-    res = CLIENT.get_bus_detail(term)
-
-    return HttpResponse(json.dumps(res), content_type='application/json')
-
 def paradas_bus(request):
     CLIENT.auth()
 
     try:
-        term = request.GET['term']
+        uid = request.GET['term']
     except:
-        term = None
+        uid = None
 
-    res = CLIENT.search_by_bus(term=term)
+    res = CLIENT.search_stops_by_bus(uid)
 
     return HttpResponse(json.dumps(res), content_type='application/json')
