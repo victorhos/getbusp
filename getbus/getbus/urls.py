@@ -8,11 +8,13 @@ urlpatterns = patterns('',
     url(r'^$', 'getbus.views.home', name='home'),
 
     #sptrans
-    url(r'^auth_sptrans/$', 'getbus.views.auth_sptrans', name='auth_sptrans'),
+    url(r'^auth_sptrans/$', 'getbus.views.auth_sptrans', 
+                                                    name='auth_sptrans'),
     url(r'^buscar_bus/$', 'getbus.views.buscar_bus', name='buscar_bus'),
-    url(r'^buscar_bus_detail/$', 'getbus.views.buscar_bus_detail', 
-                                                    name='buscar_bus_detail'),
+    url(r'^detalhe_bus/$', 'getbus.views.detalhe_bus', 
+                                                    name='detalhe_bus'),
     url(r'^paradas_bus/$', 'getbus.views.paradas_bus', name='paradas_bus'),
+    url(r'^posicao_bus/$', 'getbus.views.posicao_bus', name='posicao_bus'),
 
     #admin
     url(r'^admin/', include(admin.site.urls)),

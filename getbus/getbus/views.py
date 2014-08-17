@@ -37,7 +37,7 @@ def buscar_bus(request):
 
     return HttpResponse(json.dumps(res), content_type='application/json')
 
-def buscar_bus_detail(request):
+def detalhe_bus(request):
     CLIENT.auth()
 
     try:
@@ -61,8 +61,7 @@ def paradas_bus(request):
 
     return HttpResponse(json.dumps(res), content_type='application/json')
 
-
-def bus_posicao(request):
+def posicao_bus(request):
     CLIENT.auth()
 
     try:
@@ -70,7 +69,7 @@ def bus_posicao(request):
     except:
         uid = None
 
-    res = CLIENT.search_stops_by_bus(uid)
+    res = CLIENT.get_bus_position(uid)
 
     return HttpResponse(json.dumps(res), content_type='application/json')
 
