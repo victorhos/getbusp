@@ -37,14 +37,55 @@ def buscar_bus(request):
 
     return HttpResponse(json.dumps(res), content_type='application/json')
 
+def buscar_bus_detail(request):
+    CLIENT.auth()
+
+    try:
+        uid = request.GET['uid']
+    except:
+        uid = None
+
+    res = CLIENT.get_bus_detail(uid)
+
+    return HttpResponse(json.dumps(res), content_type='application/json')
+
 def paradas_bus(request):
     CLIENT.auth()
 
     try:
-        uid = request.GET['term']
+        uid = request.GET['uid']
     except:
         uid = None
 
     res = CLIENT.search_stops_by_bus(uid)
 
     return HttpResponse(json.dumps(res), content_type='application/json')
+
+
+def bus_posicao(request):
+    CLIENT.auth()
+
+    try:
+        uid = request.GET['uid']
+    except:
+        uid = None
+
+    res = CLIENT.search_stops_by_bus(uid)
+
+    return HttpResponse(json.dumps(res), content_type='application/json')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

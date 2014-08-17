@@ -78,7 +78,8 @@ class SPTransClient(object):
         uma determinada linha.
         """
 
-        return self._get('Parada/BuscarParadasPorLinha?codigoLinha=%s' % uid)
+        return self._get(
+                        'Parada/BuscarParadasPorLinha?codigoLinha=%s' % uid)
 
     def get_bus_position(self, uid):
 
@@ -96,8 +97,8 @@ class SPTransClient(object):
         informada que atende ao ponto de parada informado.
         """
 
-        return self._get('Previsao?codigoParada=%s&codigoLinha=%s' % (stop_id,
-                                                                      bus_id))
+        return self._get('Previsao?codigoParada=%s&codigoLinha=%s' % (
+                                                        stop_id, bus_id))
 
     def get_next_bus_in_stop(self, stop_id):
 
